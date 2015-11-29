@@ -1,3 +1,3 @@
 Spree::Core::Engine.routes.draw do
-  # Add your extension routes here
+  get 'mollie/confirm/:order_id', to: 'mollie_status#confirm', as: 'confirm_mollie_status'
 end

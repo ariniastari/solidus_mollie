@@ -23,7 +23,7 @@ describe "Mollie Payment Method" do
 
   context "admin can configure the mollie payment", js: true do
     before(:each) do
-      Spree::PaymentMethod::Mollie.create!({name: "Mollie"})
+      Spree::PaymentMethod::MolliePayments.create!({name: "Mollie"})
       click_link "Payment Methods"
       within("table#listing_payment_methods") do
         click_icon(:edit)

@@ -1,5 +1,5 @@
 module Spree
-  class PaymentMethod::Mollie < PaymentMethod
+  class PaymentMethod::MolliePayments < PaymentMethod
     preference :api_key, :string
 
     def payment_profiles_supported?
@@ -10,7 +10,7 @@ module Spree
     end
 
     def source_required?
-      false
+      true
     end
 
     def credit(*)

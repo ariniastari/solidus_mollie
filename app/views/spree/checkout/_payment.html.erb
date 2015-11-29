@@ -1,0 +1,30 @@
+<fieldset id="payment" data-hook>
+  <legend align="center"><%= Spree.t(:payment_information) %></legend>
+  <div data-hook="checkout_payment_step">
+
+    <div id="payment-method-fields" data-hook>
+      <% SolidusMollie::PaymentService.mollie_payment_methods.each do |method| %>
+      <p>
+        <label>
+          <%= radio_button_tag "order[payments_attributes][][mollie_method_id]", method['id'], false %>
+          <img src="<%= method['image']['normal'] %>">
+        <%= method['description'] %>
+        </label>
+      </p>
+      <% end %>
+    </div>
+
+    <br style="clear:both;" />
+    <p class='field' data-hook='coupon_code'>
+      <%= form.label :coupon_code %><br />
+      <%= form.text_field :coupon_code %>
+    </p>
+  </div>
+</fieldset>
+
+<br class="space" />
+
+<div class="form-buttons" data-hook="buttons">
+  <%= submit_tag Spree.t(:save_and_continue), :class => 'continue button primary' %>
+  <script>Spree.disableSaveOnClick();</script>
+</div>

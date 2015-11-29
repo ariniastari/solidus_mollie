@@ -18,7 +18,7 @@ module SolidusMollie
     config.to_prepare &method(:activate).to_proc
 
     initializer "solidus_mollie.register.payment_methods", :after => 'spree.register.payment_methods' do |app|
-      app.config.spree.payment_methods += [Spree::PaymentMethod::Mollie]
+      app.config.spree.payment_methods += [Spree::PaymentMethod::MolliePayments]
     end
   end
 end
