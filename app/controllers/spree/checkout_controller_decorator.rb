@@ -22,6 +22,7 @@ Spree::CheckoutController.class_eval do
         transaction_id: mollie_response["id"]
       })
 
+      @order.payments.not_store_credits.destroy_all
       payment = @order.payments.create({:amount => @order.total,
                                        :source => mollie_transaction,
                                        :payment_method => Spree::PaymentMethod::MolliePayments.first}

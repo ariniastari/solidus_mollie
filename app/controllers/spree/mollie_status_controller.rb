@@ -12,8 +12,9 @@ module Spree
       status = mollie.payment_status(txn)
       if status["status"] == "paid"
         payment.complete!
+        order.update!
         order.complete!
-        redirect_to spree_order_path(order)
+        redirect_to spree.order_path(order)
       else
         redirect_to '/'
       end
