@@ -34,6 +34,7 @@ Spree::CheckoutController.class_eval do
       # assuming the last pending payment is the mollie payment.
       # TODO make sure it's actually the mollie payment. Since there could be
       # store_credit payments as well.
+      @order.payments.where(source: nil).destroy_all
       payment = @order.payments.pending.last
       url_txn = payment.source.transaction_id.gsub('tr_','')
       redirect_to "https://www.mollie.nl/payscreen/pay/#{url_txn}"
