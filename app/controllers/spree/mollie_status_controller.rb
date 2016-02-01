@@ -16,7 +16,7 @@ module Spree
         order.complete!
         redirect_to spree.order_path(order)
       else
-        redirect_to '/'
+        redirect_to checkout_state_path(:payment)
       end
     end
   end
