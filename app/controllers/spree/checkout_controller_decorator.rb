@@ -7,7 +7,6 @@ Spree::CheckoutController.class_eval do
   def handle_mollie
     # setup mollie transaction to be used in the confirm step.
     if params[:state] == 'payment'
-      binding.pry
       mollie = SolidusMollie::PaymentService.mollie_client
 
       amount = @order.total.to_f
