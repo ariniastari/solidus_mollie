@@ -38,7 +38,7 @@ Spree::CheckoutController.class_eval do
       @order.payments.where(source: nil).destroy_all
       payment = @order.payments.pending.last
       url_txn = payment.source.transaction_id.gsub('tr_','')
-      redirect_to "https://www.mollie.nl/payscreen/pay/#{url_txn}"
+      redirect_to payment.source.payment_url
     end
     return
   end
