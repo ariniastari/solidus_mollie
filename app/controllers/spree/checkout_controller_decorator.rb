@@ -19,7 +19,8 @@ Spree::CheckoutController.class_eval do
 
       mollie_transaction = MollieTransaction.create!({
         payment_method_id: method,
-        transaction_id: mollie_response["id"]
+        transaction_id: mollie_response["id"],
+        payment_url: mollie_response["links"]["paymentUrl"]
       })
 
       @order.payments.not_store_credits.destroy_all
