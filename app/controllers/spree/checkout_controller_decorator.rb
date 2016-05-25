@@ -37,7 +37,6 @@ Spree::CheckoutController.class_eval do
       # store_credit payments as well.
       @order.payments.where(source: nil).destroy_all
       payment = @order.payments.pending.last
-      url_txn = payment.source.transaction_id.gsub('tr_','')
       redirect_to payment.source.payment_url
     end
     return
